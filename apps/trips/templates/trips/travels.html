@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'trips/style.css' %}">
+</head>
+<body>
+    <h3>Welcome {{ user.id }}</h3>
+    <div class="container">
+        {% csrf_token  %}
+        <h2>Your Trip Schedules</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Plan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in trips %}
+                    <tr>
+                        <td>{{ users.destination }}</td>
+                        <td>{{ users.start_date }}</td>
+                        <td>{{ users.end_date }}</td>                
+                        <td>{{ users.desc }}</a> 
+                    </tr>        
+                {% endfor %}
+                </tbody>
+            </table>
+            <table>
+                <h2>Other Users Travel Plans</h2>
+                <tbody>
+                    <thead>
+                    <tr>
+                        <th>Destination</th>                            
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Do You Want To Join</th>
+                    </tr>
+                </thead>
+                {% for user in trips %}
+                     <tr>
+                        <td>{{ users.destination }}</td>
+                        <td>{{ users.start_date }}</td>
+                        <td>{{ users.end_date }}</td>                
+                        <td><a href="/trips/{{ user.id }}">Join</a> 
+                    </tr>        
+                {% endfor %}
+                </tbody>
+                </th>
+            </table>
+        <a href="/create">Add Travel Plan</a>
+        <p>
+        <a href="logout">Logout</a>
+</body>
+</html>

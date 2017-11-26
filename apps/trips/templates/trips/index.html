@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'trips/style.css' %}">
+</head>
+<body>
+    <h1>REGISTER</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}            
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name">
+            </div>
+            <p>
+            <div class="form-group">
+                <label for="alis">Alias</label>
+                <input type="text" name="alias">
+            </div> 
+            <p>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div> 
+            <p>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" name="password">
+            </div> 
+            <p><span style="color:red">*Password must be at least 8 characters</span>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="text" name="confirm_password">
+            </div>
+            <p> 
+            <div class="form-group">
+                <label for="birthday">Date of Birth</label>
+                <input type="date" name="birthday">
+            </div>
+            <p>
+            <button type="submit" value="Register">Register</button>
+            <p></p>
+        </form>
+    <h1>LOGIN</h1>    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}          
+        <form action="/travels" method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="jflakfjal;kgjal;kj"/>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email">
+            </div>
+            <p> 
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" name="password">
+            </div>
+            <button type="submit" value="Login">Login</button>
+        </form>
+</body>
+</html>
